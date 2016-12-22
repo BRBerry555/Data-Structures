@@ -72,7 +72,6 @@ void DoublyLinkedList<T>::addFront(T data) {
 }
 template <class T>
 void DoublyLinkedList<T>::deleteNode(T search) {
-	Node<T> *p = Head;
 	if (Tail->Data == search) {
 		Node<T> *delPtr = Tail;
 		Node<T> *prev = Tail->Prev;
@@ -81,6 +80,7 @@ void DoublyLinkedList<T>::deleteNode(T search) {
 
 		delete delPtr;
 	} else {
+		Node<T> *p = Head;
 		while ((p->Next->Data != search) && (p->Next != NULL))
 			p = p->Next;
 		//*tmp is the Node after the one being deleted
