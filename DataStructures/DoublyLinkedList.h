@@ -8,8 +8,9 @@ template <class T>
 class DoublyLinkedList :public Node<T> {
 private:
 	Node *Head;
+	Node *Tail;
 public:
-	DoublyLinkedList() :Head(NULL) {}
+	DoublyLinkedList() :Head(NULL),Tail(NULL) {}
 	DoublyLinkedList(T Data);
 	void addEnd(T Data);
 	void addFront(T Data);
@@ -19,6 +20,7 @@ public:
 	void printListReverse();
 	void printList();
 	int size();
+	void printTail();
 };
 
 
@@ -30,6 +32,7 @@ DoublyLinkedList<T>::DoublyLinkedList(T data) {
 	Head->Data = data;
 	Head->Next = NULL;
 	Head->Prev = NULL;
+	Tail = Head;
 }
 template <class T>
 void DoublyLinkedList<T>::addEnd(T data) {
@@ -47,6 +50,7 @@ void DoublyLinkedList<T>::addEnd(T data) {
 		n->Next = NULL;
 		p->Next = n;
 		n->Prev = p;
+		Tail = n;
 	}
 }
 template<class T>
@@ -64,20 +68,28 @@ void DoublyLinkedList<T>::addFront(T data) {
 		n->Next = Head;
 		n->Prev = NULL;
 		p->Prev = n;
-		Head = n;
 	}
 }
 template <class T>
 void DoublyLinkedList<T>::deleteNode(T search) {
 	Node<T> *p = Head;
-	while ((p->Next->Data != search) && (p->Next != NULL))
-		p = p->Next;
-	//*tmp is the Node after the one being deleted
-	Node<T> *tmp = p->Next->Next;
-	Node<T> *delPtr = p->Next;
-	p->Next = tmp;
-	tmp->Prev = p;
-	delete delPtr;
+	if (Tail->Data == search) {
+		Node<T> *delPtr = Tail;
+		Node<T> *prev = Tail->Prev;
+		prev->Next = NULL;
+		Tail = prev;
+
+		delete delPtr;
+	} else {
+		while ((p->Next->Data != search) && (p->Next != NULL))
+			p = p->Next;
+		//*tmp is the Node after the one being deleted
+		Node<T> *tmp = p->Next->Next;
+		Node<T> *delPtr = p->Next;
+		p->Next = tmp;
+		tmp->Prev = p;
+		delete delPtr;
+	}
 }
 template <class T>
 void DoublyLinkedList<T>::insertAfter(T search, T data) {
@@ -124,4 +136,8 @@ int DoublyLinkedList<T>::size() {
 		p = p->Next;
 	}
 	return size;
+}
+template <class T>
+void DoublyLinkedList<T>::printTail() {
+	std::cout << Tail->Data.c_str() << std::endl;
 }

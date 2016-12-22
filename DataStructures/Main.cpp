@@ -6,6 +6,9 @@ void linkedListTest();
 void doublyLinkedListTest();
 
 int main() {
+	/*DoublyLinkedList<std::string> testList("tail");
+	testList.printList();
+	testList.printTail();*/
 	doublyLinkedListTest();
 
 	std::cin.get();
@@ -29,20 +32,20 @@ void linkedListTest() {
 void doublyLinkedListTest() {
 	DoublyLinkedList<std::string> testList;
 
-	testList.addFront("A");
+	/*testList.addFront("A");
 	testList.addFront("B");
 	testList.addFront("C");
 	testList.addFront("D");
 	testList.addFront("E");
-	testList.addFront("F");
-	/*testList.addEnd("A");
+	testList.addFront("F");*/
+	testList.addEnd("A");
 	testList.addEnd("B");
 	testList.addEnd("C");
 	testList.addEnd("D");
 	testList.addEnd("E");
-	testList.addEnd("F");*/
+	testList.addEnd("F");
 	testList.printList();
-	testList.deleteNode("D");
+	testList.deleteNode("F");
 	testList.insertAfter("B", "insert test");
 	std::cout << "*---------*" << std::endl;
 	testList.printList();
