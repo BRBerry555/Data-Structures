@@ -2,13 +2,7 @@
 #define LINKEDLIST
 
 #include<iostream>
-
-template <class T>
-struct Node {
-	T Data;
-	//Link section
-	Node *Next;
-};
+#include "Node.h"
 
 template <class T>
 class LinkedList :public Node<T> {
