@@ -56,4 +56,5 @@ void stackTest() {
 	std::cout << testStack.peek() << std::endl;
 	testStack.pop();
 	testStack.pop();
+	testStack.peek();
 }

@@ -27,7 +27,11 @@ void Stack<T>::push(T data) {
 }
 template<class T>
 T Stack<T>::peek() {
-	return this->Head->Data;
+	if (empty())
+		return NULL;
+	else {
+		return this->Head->Data;
+	}
 }
 template<class T>
 void Stack<T>::pop() {
