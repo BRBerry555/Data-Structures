@@ -6,8 +6,9 @@
 
 template <class T>
 class LinkedList :public Node<T> {
-private:
+protected:
 	Node *Head;
+private:
 	void insert(T Data, Node<T> *ptr);
 public:
 	LinkedList() :Head(NULL) {}

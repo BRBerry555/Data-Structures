@@ -1,21 +1,20 @@
 #include <iostream>
-#include "LinkedList.h"
 #include "DoublyLinkedList.h"
+#include "Stack.h"
 
 void linkedListTest();
 void doublyLinkedListTest();
+void stackTest();
 
 int main() {
-	/*DoublyLinkedList<std::string> testList("tail");
-	testList.printList();
-	testList.printTail();*/
-	doublyLinkedListTest();
+	stackTest();
 
 	std::cin.get();
 	return 0;
 }
 void linkedListTest() {
-	LinkedList<std::string> testList("9");
+	//Actually testing linkedlist class
+	Stack<std::string> testList("9");
 
 	testList.addFront("A");
 	testList.addFront("B");
@@ -32,12 +31,6 @@ void linkedListTest() {
 void doublyLinkedListTest() {
 	DoublyLinkedList<std::string> testList;
 
-	/*testList.addFront("A");
-	testList.addFront("B");
-	testList.addFront("C");
-	testList.addFront("D");
-	testList.addFront("E");
-	testList.addFront("F");*/
 	testList.addEnd("A");
 	testList.addEnd("B");
 	testList.addEnd("C");
@@ -53,4 +46,15 @@ void doublyLinkedListTest() {
 	testList.printListReverse();
 	std::cout << "Size: " << testList.size() << std::endl;
 	
+}
+void stackTest() {
+	Stack<int> testStack;
+	testStack.push(1);
+	testStack.push(2);
+	std::cout << testStack.peek() << std::endl;
+	testStack.pop();
+	std::cout << testStack.peek() << std::endl;
+	testStack.pop();
+	testStack.pop();
+	testStack.peek();
 }
